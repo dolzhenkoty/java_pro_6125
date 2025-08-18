@@ -1,22 +1,22 @@
 package org.javapro.oop.annotations;
 
-public class c {
+public class TestClass {
     private String field_str;
     private int    field_int;
 
-    public c(String s, int i){
+    public TestClass(String s, int i){
         this.field_str = s;
         this.field_int = i;
     }
 
-    @Test(priority = 5)
+    @Test()
     public void method1 () {
         System.out.println("I'm method1");
     }
 
     @BeforeSuite
     public static void method2 () {
-        System.out.println("I'm staic method2");
+        System.out.println("I'm static method2");
     }
 
     @Test(priority = 1)
@@ -34,7 +34,7 @@ public class c {
         System.out.println("I'm method5");
     }
 
-    @Test(priority = 2)
+    @Test(priority = 10)
     public void method6 () {
         System.out.println("I'm method6");
     }
