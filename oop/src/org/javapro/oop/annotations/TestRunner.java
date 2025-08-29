@@ -68,8 +68,8 @@ public class TestRunner {
         List<Integer> testListSorted = new ArrayList<>(methodsToInvoke.keySet());
         Collections.sort(testListSorted);
         Collections.reverse(testListSorted);
-        for(Integer mPriority : testListSorted) {
-            List<Method> toInvoke = methodsToInvoke.get(mPriority);
+        for(Integer p : testListSorted) {
+            List<Method> toInvoke = methodsToInvoke.get(p);
             for (Method mInvoke : toInvoke) {
                 System.out.println("Invoking " + mInvoke.getName() + " priority: " + mInvoke.getAnnotation(Test.class).priority());
                 TestClass TestClassInst = new TestClass("Just a string", 0);
