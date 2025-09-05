@@ -28,6 +28,7 @@ public class CustomThreadPool {
 
         synchronized (taskQueue) {
             taskQueue.addLast(task);
+            taskQueue.notify();
         }
     }
 
@@ -50,6 +51,13 @@ public class CustomThreadPool {
                 synchronized (taskQueue) {
                     if (!taskQueue.isEmpty()) {
                         task = taskQueue.removeFirst();
+                    } else {
+                        try {
+                            taskQueue.wait();
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                     }
                 }
                 if (task != null) task.run();
